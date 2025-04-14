@@ -1,4 +1,5 @@
 import 'package:awad_badi_nahas_training/core/routes/app_routes.dart';
+import 'package:awad_badi_nahas_training/core/theme/app_theme_manager.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,7 +13,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      onGenerateRoute: AppRoutes.onGenerateRoute
+      onGenerateRoute: AppRoutes.onGenerateRoute,
+      theme: AppThemeManager.lightTheme,
     );
   }
 }
