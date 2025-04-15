@@ -1,3 +1,4 @@
+import 'package:awad_badi_nahas_training/core/routes/page_route_names.dart';
 import 'package:awad_badi_nahas_training/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
@@ -49,15 +50,7 @@ class OtpScreen extends StatelessWidget {
                     
                 },
                 onSubmit: (String verificationCode){
-                  showDialog(
-                      context: context,
-                      builder: (context){
-                      return AlertDialog(
-                          title: Text("Verification Code"),
-                          content: Text('Code entered is $verificationCode'),
-                      );
-                    }
-                  );
+                  Navigator.pushNamed(context, PageRouteNames.newPassword);
                 }, // end onSubmit
               ),
               SizedBox(height: 10),

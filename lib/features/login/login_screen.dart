@@ -70,6 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               _goodEmail = false;
                               return "Please enter your email address right";
                             }
+                            _goodEmail = false;
                             return null;
                           }
                         ),
@@ -100,6 +101,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               _goodPass = false;
                               return "Please enter your password right";
                             }
+                            _goodPass = true;
                             return null;
                           }
                         ),
