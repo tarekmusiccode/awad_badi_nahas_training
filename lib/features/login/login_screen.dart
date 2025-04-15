@@ -16,15 +16,17 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  bool _goodPass = false;
+  bool _goodEmail = false;
   bool _rememberMe = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15.0),
-        child: SafeArea(
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15.0),
           child: Column(
             children: [
               Expanded(
@@ -41,7 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         fontSize: 33
                       ),
                     ),
-                    SizedBox(height: 50),
+                    SizedBox(height: 40),
                     Wrap(
                       children: [
                         Text(
@@ -61,9 +63,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           hintColor: Colors.grey,
                           onValidate: (value) {
                             if (value == null || value.trim().isEmpty) {
+                              _goodEmail = false;
                               return "Please enter your email address";
                             }
                             else if (!Validations.validateEmail(value)) {
+                              _goodEmail = false;
                               return "Please enter your email address right";
                             }
                             return null;
@@ -89,9 +93,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           maxLines: 1,
                           onValidate: (value) {
                             if (value == null || value.trim().isEmpty) {
+                              _goodPass = false;
                               return "Please enter your password";
                             }
                             else if (!Validations.validatePassword(value)) {
+                              _goodPass = false;
                               return "Please enter your password right";
                             }
                             return null;
@@ -118,9 +124,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       controlAffinity: ListTileControlAffinity.leading,
                       contentPadding: EdgeInsets.zero,
                     ),
-                    _passwordController.text.trim().isEmpty && _emailController.text.trim().isEmpty ?
-                      CustomElevatedButton(text: "Login", buttonColor: AppColors.redGrey, textColor: AppColors.white) : 
-                        CustomElevatedButton(text: "Login", buttonColor: AppColors.red, textColor: AppColors.white),
+                    CustomElevatedButton(text: "Login", buttonColor: AppColors.red, textColor: AppColors.white, onTap: (){}),
                     SizedBox(height: 10),
                     Row(
                       children: [
@@ -156,11 +160,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    CustomElevatedButton(text: "Continue with Phone number", textColor: AppColors.black, icn: Icons.phone),
+                    CustomElevatedButton(text: "Continue with Phone number", textColor: AppColors.black, icn: Icons.phone, onTap: (){}),
                     SizedBox(height: 10),
-                    CustomElevatedButton(text: "Continue with Google", textColor: AppColors.black, imgIcn: AppAssets.googleIcn,),
+                    CustomElevatedButton(text: "Continue with Google", textColor: AppColors.black, imgIcn: AppAssets.googleIcn, onTap: (){}),
                     SizedBox(height: 10),
-                    CustomElevatedButton(text: "Continue with Facebook", textColor: AppColors.black, imgIcn: AppAssets.facebookIcn),
+                    CustomElevatedButton(text: "Continue with Facebook", textColor: AppColors.black, imgIcn: AppAssets.facebookIcn, onTap: (){}),
                     SizedBox(height: 20),
                     Text.rich(
                       textAlign: TextAlign.center,

@@ -8,7 +8,8 @@ class CustomElevatedButton extends StatelessWidget {
     required this.textColor,
     this.buttonColor,
     this.icn,
-    this.imgIcn
+    this.imgIcn,
+    this.onTap
   });
 
   final String text;
@@ -16,13 +17,12 @@ class CustomElevatedButton extends StatelessWidget {
   final Color? buttonColor;
   final IconData? icn;
   final String? imgIcn;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {
-
-      },
+      onPressed: onTap,
       style: ElevatedButton.styleFrom(
         backgroundColor: buttonColor ?? AppColors.white,
         padding: const EdgeInsets.symmetric(vertical: 20),
